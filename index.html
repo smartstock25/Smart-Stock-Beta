@@ -54,3 +54,23 @@
   <script src="main.js"></script>
 </body>
 </html>
+<hr>
+<section id="settings">
+  <h2>⚙️ Settings</h2>
+
+  <div class="settings-section">
+    <h3>🔔 Notification Preferences</h3>
+    <label><input type="radio" name="notifType" value="text" checked> Text Message</label><br>
+    <label><input type="radio" name="notifType" value="email"> Email</label>
+  </div>
+
+  <div class="settings-section">
+    <h3>📡 Alerts</h3>
+    <label><input type="checkbox" id="priceAlerts" checked> Price Target Alerts</label><br>
+    <label><input type="checkbox" id="newsAlerts" checked> Breaking News Alerts</label><br>
+    <label><input type="checkbox" id="earningsAlerts" checked> Earnings Countdowns</label>
+  </div>
+
+  <button onclick="saveSettings()">✅ Save Settings</button>
+  <p id="saveMsg" style="color: green; display: none;">✔️ Settings saved!</p>
+</section>
