@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartStock Beta</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartStock Beta Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>📈 SmartStock Beta Dashboard</h1>
+  <header class="sticky">
+    <h1>📈 SmartStock Beta Dashboard</h1>
+  </header>
 
-  <section>
-    <h2>Favorites</h2>
-    <div id="favorites">
-      <p>TSLA | NVDA | NFLX | DIS</p>
-    </div>
-  </section>
+  <main>
+    <section class="favorites">
+      <h2>⭐ Favorites</h2>
+      <div class="stock-list">TSLA | NVDA | NFLX | DIS</div>
+    </section>
 
-  <section>
-    <h2>🔮 Next 12-Hour Prediction</h2>
-    <canvas id="predictionChart" width="400" height="200"></canvas>
-  </section>
+    <section class="prediction">
+      <h2>🔮 Next 12-Hour Prediction</h2>
+      <div id="prediction-box">
+        <p>TSLA: 🔼  Uptrend <span class="confidence-bar" data-confidence="82"></span></p>
+        <p>NVDA: 🔽  Downtrend <span class="confidence-bar" data-confidence="65"></span></p>
+      </div>
+    </section>
 
-  <script src="js/main.js"></script>
+    <section class="charts">
+      <h2>📊 Live Charts</h2>
+      <div class="tradingview-widget-container">
+        <iframe src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ:TSLA&locale=en" frameborder="0" allowtransparency="true" scrolling="no" height="220"></iframe>
+        <iframe src="https://s.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NASDAQ:NVDA&locale=en" frameborder="0" allowtransparency="true" scrolling="no" height="220"></iframe>
+      </div>
+    </section>
+
+    <section class="news">
+      <h2>🗞️ Breaking News</h2>
+      <ul id="news-list">
+        <li>Loading latest headlines...</li>
+      </ul>
+    </section>
+
+    <section class="notifications">
+      <h2>🔔 Notifications</h2>
+      <label>
+        <input type="checkbox" id="emailToggle" checked /> Email
+      </label>
+      <label>
+        <input type="checkbox" id="smsToggle" /> Text (SMS)
+      </label>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
 </body>
 </html>
