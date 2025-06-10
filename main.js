@@ -43,3 +43,23 @@ function loadSettings() {
 }
 
 document.addEventListener('DOMContentLoaded', loadSettings);
+async function fetchNews() {
+  const newsList = document.getElementById('newsList');
+  newsList.innerHTML = 'Loading news...';
+
+  try {
+    const res = await fetch('https://newsapi.org/v2/everything?q=Tesla OR Nvidia OR Netflix OR Disney&sortBy=publishedAt&apiKey=YOUR_NEWSAPI_KEY');
+    const data = await res.json();
+
+    newsList.innerHTML = '';
+    data.articles.slice(0, 5).forEach(article => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+      newsList.appendChild(li);
+    });
+  } catch (err) {
+    newsList.innerHTML = '⚠️ Failed to load news.';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', fetchNews);
