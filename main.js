@@ -1,23 +1,14 @@
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.confidence-bar').forEach(bar => {
+    const confidence = parseInt(bar.getAttribute('data-confidence'));
+    bar.style.width = `${confidence}%`;
+  });
 
-const ctx = document.getElementById('predictionChart').getContext('2d');
-const predictionChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Now', '+2h', '+4h', '+6h', '+8h', '+10h', '+12h'],
-        datasets: [{
-            label: 'TSLA Forecast ($)',
-            data: [308, 310, 307, 311, 314, 312, 310],
-            borderColor: 'rgba(75, 192, 192, 1)',
-            fill: false,
-            tension: 0.3
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                display: true
-            }
-        }
-    }
+  // Load Breaking News (stub example)
+  const newsList = document.getElementById('news-list');
+  newsList.innerHTML = `
+    <li>TSLA hits new highs amid AI news 📢</li>
+    <li>NVDA earnings expected this week 💰</li>
+    <li>DIS announces new streaming bundle 📺</li>
+  `;
 });
