@@ -63,3 +63,57 @@ async function fetchNews() {
 }
 
 document.addEventListener('DOMContentLoaded', fetchNews);
+const earningsDates = {
+  TSLA: '2025-07-23',
+  NVDA: '2025-08-15',
+  NFLX: '2025-07-17',
+  DIS:  '2025-08-01'
+};
+
+function updateEarningsCountdown() {
+  const list = document.getElementById('earningsList');
+  list.innerHTML = '';
+
+  Object.entries(earningsDates).forEach(([symbol, date]) => {
+    const daysLeft = Math.ceil((new Date(date) - new Date()) / (1000 * 60 * 60 * 24));
+    const li = document.createElement('li');
+    li.innerHTML = `📊 ${symbol}: ${daysLeft > 0 ? `${daysLeft} days` : 'Today'} until earnings`;
+    list.appendChild(li);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', updateEarningsCountdown);
+function addFavorite() {
+  const input = document.getElementById('stockInput');
+  const symbol = input.value.trim().toUpperCase();
+  if (!symbol) return;
+
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  if (!favorites.includes(symbol)) {
+    favorites.push(symbol);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    renderFavorites();
+    input.value = '';
+  }
+}
+
+function removeFavorite(symbol) {
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  favorites = favorites.filter(s => s !== symbol);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  renderFavorites();
+}
+
+function renderFavorites() {
+  const list = document.getElementById('favoritesList');
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+  list.innerHTML = '';
+  favorites.forEach(symbol => {
+    const li = document.createElement('li');
+    li.innerHTML = `${symbol} <button onclick="removeFavorite('${symbol}')">❌ Remove</button>`;
+    list.appendChild(li);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderFavorites);
