@@ -44,3 +44,43 @@ iframe {
   border: none;
   margin-bottom: 1rem;
 }
+#settings {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.settings-section {
+  margin-bottom: 20px;
+}
+
+#settings h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#settings h3 {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+#settings label {
+  display: block;
+  margin: 6px 0;
+}
+
+#settings button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#settings button:hover {
+  background-color: #0056b3;
+}
